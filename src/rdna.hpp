@@ -3,17 +3,16 @@
 #include <string>
 using namespace std;
 
-string randDNA (seed,bases,n)
+string randDNA (int seed, string bases, int n)
 	{
-		std::mt19337 eng (seed);
-		std::uniform_string_distribution <>unifrm(bases);
-		string DNA ="";
-		
-		for(int c=0 ; c <= n ; c++)
+		mt19937 eng(seed);
+		uniform_int_distribution<int> uni(0,bases.size()-1);
+		string DNA;
+				
+		for(int c=0; c<n; c++)
 		{
-			DNA(c) = unifrm(eng) ;
+			DNA+= bases[uni(eng)];
 		}
-		
 		return DNA;
 		
-		
+	}
